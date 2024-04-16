@@ -5,21 +5,26 @@ export const usePostcode = () => {
   const [postcode, setPostcode] = useState('');
   const [postcodeData, setPostcodeData] = useState(null);
   const [postcodeHistory, setPostcodeHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
   const fetchPostcodeDetails = async (postcodeArg = postcode) => {
     if (!postcodeArg) return;
 
+    setError(null);
+    setLoading(true);
+
     try {
       const data = await getPostcodeDetails(postcodeArg);
       setPostcodeData(data);
       addPostcodeToHistory(data.postcode);
-
-      setError(null);
       setPostcode('');
     } 
     catch (error) {
       setError(error.message);
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -37,6 +42,7 @@ export const usePostcode = () => {
 
   return {
     error,
+    loading,
     postcode,
     setPostcode,
     postcodeData,

@@ -8,6 +8,7 @@ import { usePostcode } from './hooks/usePostcode';
 function App() {
   const {
     error,
+    loading,
     postcode,
     setPostcode,
     postcodeData,
@@ -32,12 +33,8 @@ function App() {
         setPostcode={setPostcode}
         onSubmit={handlePostcodeSubmit}
       />
-      {
-        error && 
-        <div className="alert alert-danger" role="alert">
-          {error}
-        </div>
-      }
+      {loading && <p>Loading...</p>}
+      {error && <div className="alert alert-danger" role="alert">{error}</div>}
       <PostcodeDetails data={postcodeData} />
       <PostcodeHistory
         history={postcodeHistory}
