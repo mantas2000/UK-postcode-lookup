@@ -21,6 +21,7 @@ export const usePostcode = () => {
       setPostcode('');
     } 
     catch (error) {
+      setPostcodeData(null);
       setError(error.message);
     }
     finally {
