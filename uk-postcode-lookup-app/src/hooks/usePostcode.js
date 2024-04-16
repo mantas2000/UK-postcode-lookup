@@ -5,6 +5,7 @@ export const usePostcode = () => {
   const [postcode, setPostcode] = useState('');
   const [postcodeData, setPostcodeData] = useState(null);
   const [postcodeHistory, setPostcodeHistory] = useState([]);
+  const [error, setError] = useState(null);
   
   const fetchPostcodeDetails = async (postcodeArg = postcode) => {
     if (!postcodeArg) return;
@@ -13,15 +14,18 @@ export const usePostcode = () => {
       const data = await getPostcodeDetails(postcodeArg);
       setPostcodeData(data);
       addPostcodeToHistory(data.postcode);
+
+      setError(null);
       setPostcode('');
-    } catch (error) {
-      console.error('Error fetching postcode details:', error);
+    } 
+    catch (error) {
+      setError(error.message);
     }
   };
 
   const addPostcodeToHistory = (postcode) => {
     setPostcodeHistory((prevHistory) =>
-     [postcode, ...prevHistory.filter((item) => item !== postcode)]
+      [postcode, ...prevHistory.filter((item) => item !== postcode)]
     );
   };
 
@@ -32,6 +36,7 @@ export const usePostcode = () => {
   };
 
   return {
+    error,
     postcode,
     setPostcode,
     postcodeData,
