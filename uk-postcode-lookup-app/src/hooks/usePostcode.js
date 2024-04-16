@@ -10,7 +10,7 @@ export const usePostcode = () => {
     try {
       const data = await getPostcodeDetails(postcode);
       setPostcodeData(data);
-      addPostcodeToHistory(postcode);
+      addPostcodeToHistory(data.postcode);
       setPostcode('');
     } catch (error) {
       console.error('Error fetching postcode details:', error);
@@ -18,9 +18,9 @@ export const usePostcode = () => {
   };
 
   const addPostcodeToHistory = (postcode) => {
-    if (!postcodeHistory.includes(postcode)) {
-      setPostcodeHistory((prevHistory) => [...prevHistory, postcode]);
-    }
+    setPostcodeHistory((prevHistory) =>
+     [postcode, ...prevHistory.filter((item) => item !== postcode)]
+    );
   };
 
   const removePostcodeFromHistory = (postcodeToRemove) => {
