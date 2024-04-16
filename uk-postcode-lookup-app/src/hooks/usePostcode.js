@@ -5,10 +5,12 @@ export const usePostcode = () => {
   const [postcode, setPostcode] = useState('');
   const [postcodeData, setPostcodeData] = useState(null);
   const [postcodeHistory, setPostcodeHistory] = useState([]);
+  
+  const fetchPostcodeDetails = async (postcodeArg = postcode) => {
+    if (!postcodeArg) return;
 
-  const fetchPostcodeDetails = async () => {
     try {
-      const data = await getPostcodeDetails(postcode);
+      const data = await getPostcodeDetails(postcodeArg);
       setPostcodeData(data);
       addPostcodeToHistory(data.postcode);
       setPostcode('');

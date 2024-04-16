@@ -20,8 +20,7 @@ function App() {
   };
 
   const handlePostcodeView = (postcode) => {
-    setPostcode(postcode);
-    fetchPostcodeDetails();
+    fetchPostcodeDetails(postcode);
   };
 
   return (
