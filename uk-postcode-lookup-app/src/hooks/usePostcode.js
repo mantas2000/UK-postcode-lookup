@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getPostcodeDetails } from '../services/postcodeService';
+
+const loadHistory = () => {
+  const savedHistory = localStorage.getItem('postcodeHistory');
+  return savedHistory ? JSON.parse(savedHistory) : [];
+};
 
 export const usePostcode = () => {
   const [postcode, setPostcode] = useState('');
   const [postcodeData, setPostcodeData] = useState(null);
-  const [postcodeHistory, setPostcodeHistory] = useState([]);
+  const [postcodeHistory, setPostcodeHistory] = useState(loadHistory);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('postcodeHistory', JSON.stringify(postcodeHistory));
+  }, [postcodeHistory]);
   
   const fetchPostcodeDetails = async (postcodeArg = postcode) => {
     if (!postcodeArg) return;
@@ -21,8 +30,8 @@ export const usePostcode = () => {
       setPostcode('');
     } 
     catch (error) {
-      setPostcodeData(null);
       setError(error.message);
+      setPostcodeData(null);
     }
     finally {
       setLoading(false);
