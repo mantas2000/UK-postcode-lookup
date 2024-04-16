@@ -5,8 +5,8 @@ const PostcodeHistory = ({ history, onView, onRemove }) => {
     <div className="mt-4">
       <h2>Postcode History</h2>
       <ul className="list-group">
-        {history.map((item, index) => (
-          <li key={index} className="list-group-item">
+        {history.map((item) => (
+          <li key={item} className="list-group-item"> 
             {item}
             <button className="btn btn-link" onClick={() => onView(item)}>
               View
