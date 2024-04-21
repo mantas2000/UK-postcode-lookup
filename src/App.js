@@ -35,7 +35,7 @@ function App() {
         onSubmit={handlePostcodeSubmit}
         loading={loading}
       />
-      {error && <div className="alert alert-danger" role="alert">{error}</div>}
+      {error && <div className="error-container" role="alert">{error}</div>}
       <PostcodeDetails data={postcodeData} />
       {postcodeHistory.length > 0 && (
       <PostcodeHistory
