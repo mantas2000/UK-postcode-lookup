@@ -37,11 +37,13 @@ function App() {
       />
       {error && <div className="alert alert-danger" role="alert">{error}</div>}
       <PostcodeDetails data={postcodeData} />
+      {postcodeHistory.length > 0 && (
       <PostcodeHistory
         history={postcodeHistory}
         onView={handlePostcodeView}
         onRemove={removePostcodeFromHistory}
       />
+      )}
     </div>
   );
 }
