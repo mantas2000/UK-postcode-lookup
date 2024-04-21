@@ -6,7 +6,7 @@ const PostcodeDetails = ({ data }) => {
   }
 
   return (
-    <div className="mt-4">
+    <div className="shadow-effect">
       <h2>Details for: {data.postcode}</h2>
       <p>Country: {data.country}</p>
       <p>Longitude: {data.longitude}</p>

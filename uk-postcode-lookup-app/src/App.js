@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import PostcodeForm from './components/PostcodeForm';
 import PostcodeDetails from './components/PostcodeDetails';
 import PostcodeHistory from './components/PostcodeHistory';
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>UK Postcode Lookup</h1>
+      <h1 className="text-center">UK Postcode Lookup</h1>
       <PostcodeForm
         postcode={postcode}
         setPostcode={setPostcode}
