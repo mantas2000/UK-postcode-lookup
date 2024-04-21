@@ -20,7 +20,7 @@ Before running the application, make sure you have the following installed:
 2. Navigate to the project directory:
 
    ```bash
-   cd uk-postcode-lookup-app
+   cd UK-postcode-lookup
    ```
 
 3. Install the dependencies:
@@ -40,7 +40,11 @@ Before running the application, make sure you have the following installed:
 ## Usage
 
 1. Enter a valid UK postcode in the input field and click the "Lookup Postcode" button.
+
 2. If the postcode is valid, the application will display the postcode details, including the country, longitude, latitude, and admin district.
+
 3. The searched postcode will be added to the postcode history list below the form.
+
 4. To view the details of a previously searched postcode, click the "View" button next to the postcode in the history list.
+
 5. To remove a postcode from the history list, click the "Remove" button next to the postcode.
