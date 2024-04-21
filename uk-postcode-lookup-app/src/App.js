@@ -33,8 +33,8 @@ function App() {
         postcode={postcode}
         setPostcode={setPostcode}
         onSubmit={handlePostcodeSubmit}
+        loading={loading}
       />
-      {loading && <p>Loading...</p>}
       {error && <div className="alert alert-danger" role="alert">{error}</div>}
       <PostcodeDetails data={postcodeData} />
       <PostcodeHistory
